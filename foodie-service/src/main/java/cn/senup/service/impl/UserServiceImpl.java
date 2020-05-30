@@ -79,4 +79,25 @@ public class UserServiceImpl implements UserService {
         usersMapper.insert(user);
         return user;
     }
+
+    /**
+     *
+     * @auther: 涛哥
+     * @Description: 用于登录
+     * @date: 2020/5/30 17:34
+     * @param: [username, password]
+     * @return: cn.senup.pojo.Users
+     *
+     */
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public Users queryUserForLogin(String username, String password) {
+
+        Example userExample = new Example(Users.class);
+        Example.Criteria userCriteria = userExample.createCriteria();
+        userCriteria.andEqualTo("username", username)
+                .andEqualTo("password",password);
+        Users result = usersMapper.selectOneByExample(userExample);
+        return result;
+    }
 }

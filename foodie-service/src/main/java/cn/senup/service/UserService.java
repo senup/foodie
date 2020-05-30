@@ -31,4 +31,15 @@ public interface UserService {
      *
      */
     public Users createUser(UserBO userBO);
+
+    /**
+     *
+     * @auther: 涛哥
+     * @Description: 检索用户名密码是否匹配 用于登录
+     * @date: 2020/5/30 17:33
+     * @param: [username, password]
+     * @return: cn.senup.pojo.Users
+     *
+     */
+    public Users queryUserForLogin(String username, String password);
 }
